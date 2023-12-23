@@ -1,4 +1,4 @@
-### Spelling Bee in C
+# Spelling Bee in C
 
 ## About
 
