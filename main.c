@@ -93,7 +93,6 @@ int compareStrings(const void *a, const void *b) {
     return strcmp(*(const char **)a, *(const char **)b);
 }
 
-// Function to sort and concatenate guessed words
 void sortAndConcatenateGuessedWords(char *guessedWords, char *sortedGuessedWords) {
     char *words[100];  // Adjust size as needed
     int n = 0;
@@ -103,14 +102,16 @@ void sortAndConcatenateGuessedWords(char *guessedWords, char *sortedGuessedWords
         word = strtok(NULL, ", ");
     }
     qsort(words, n, sizeof(char *), compareStrings);
+
     strcpy(sortedGuessedWords, "");
     for (int i = 0; i < n; i++) {
         strcat(sortedGuessedWords, words[i]);
         if (i < n - 1) {
-            strcat(sortedGuessedWords, ", ");
+            strcat(sortedGuessedWords, ", "); // Ensure space after comma
         }
     }
 }
+
 
 // Function to display the game interface
 void displayGameInterface(const char *letters, char centralLetter, int score, const char *guessedWords, const int validWordCount) {
