@@ -93,10 +93,13 @@ int compareStrings(const void *a, const void *b) {
     return strcmp(*(const char **)a, *(const char **)b);
 }
 
-void sortAndConcatenateGuessedWords(char *guessedWords, char *sortedGuessedWords) {
+void sortAndConcatenateGuessedWords(const char *guessedWords, char *sortedGuessedWords) {
+    char tempGuessedWords[1000]; // Ensure this is large enough
+    strcpy(tempGuessedWords, guessedWords);
+
     char *words[100];  // Adjust size as needed
     int n = 0;
-    char *word = strtok(guessedWords, ", ");
+    char *word = strtok(tempGuessedWords, ", ");
     while (word != NULL) {
         words[n++] = word;
         word = strtok(NULL, ", ");
